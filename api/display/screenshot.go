@@ -4,14 +4,17 @@ package display
 //import "github.com/kbinani/screenshot"
 
 import (
-	"image"
 	"github.com/kbinani/screenshot"
-	"time"
+	"image"
 )
 
 type VideoProvider struct{}
 
-type ScreenGrabber struct {
+func (x *VideoProvider) CreateScreenGrabber(screen Screen, fps int) (ScreenGrabber, error) {
+	panic("implement me")
+}
+
+type XScreenGrabber struct {
 	fps int
 	screen Screen
 	frames chan *image.RGBA
@@ -31,11 +34,11 @@ func (x *VideoProvider) Screens() ([]Screen, error) {
 	return screens, nil
 }
 
-func (g *ScreenGrabber) Stop() {
+func (g *XScreenGrabber) Stop() {
 	close(g.stop)
 }
 
-func (g *ScreenGrabber) Fps() int {
+func (g *XScreenGrabber) Fps() int {
 	return g.fps
 }
 
