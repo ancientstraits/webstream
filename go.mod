@@ -3,7 +3,7 @@ module github.com/krishpranav/webstream
 go 1.17
 
 require (
-	github.com/gen2brain/x264-go v0.0.0-20180306035800-58f586137654
+	github.com/gen2brain/x264-go v0.2.0
 	github.com/go-vgo/robotgo v0.91.0
 	github.com/google/uuid v1.1.2
 	github.com/kbinani/screenshot v0.0.0-20210720154843-7d3a670d8329
@@ -16,6 +16,8 @@ require (
 require (
 	github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802 // indirect
 	github.com/gen2brain/shm v0.0.0-20200228170931-49f9650110c5 // indirect
+	github.com/gen2brain/x264-go/x264c v0.0.0-20211014010035-0051007e2ad5 // indirect
+	github.com/gen2brain/x264-go/yuv v0.0.0-20211014010035-0051007e2ad5 // indirect
 	github.com/jezek/xgb v0.0.0-20210312150743-0e0f116e1240 // indirect
 	github.com/lxn/win v0.0.0-20210218163916-a377121e959e // indirect
 	github.com/pion/datachannel v1.4.21 // indirect
