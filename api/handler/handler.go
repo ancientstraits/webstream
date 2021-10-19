@@ -1,9 +1,12 @@
 package handler
 
 import (
-	//"encoding/json"
+	"encoding/json"
 	"fmt"
 	"net/http"
+
+	"github.com/krishpranav/webstream/api/display"
+	"github.com/krishpranav/webstream/api/rtc"
 )
 
 func handleError(w http.ResponseWriter, err error) {
@@ -11,21 +14,72 @@ func handleError(w http.ResponseWriter, err error) {
 	w.WriteHeader(http.StatusInternalServerError)
 }
 
-func MakeHandler(err error) http.Handler {
+func MakeHandler(webrtc rtc.Service, display display.Service) http.Handler {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/sessions", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/session", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost {
 			w.WriteHeader(http.StatusMethodNotAllowed)
 			return
 		}
+		dec := json.NewDecoder(r.Body)
+		req := newSessionRequest{}
 
-		//dec := json.NewDecoder(r.Body)
-
-		if err != nil {
-			panic(err)
+		if err := dec.Decode(&req); err != nil {
+			handleError(w, err)
+			return
 		}
 
+		peer, err := webrtc.CreateRemoteScreenConnection(req.Screen, 20)
+		if err != nil {
+			handleError(w, err)
+			return
+		}
+
+		answer, err := peer.ProcessOffer(req.Offer)
+
+		if err != nil {
+			handleError(w, err)
+			return
+		}
+
+		payload, err := json.Marshal(newSessionResponse{
+			Answer: answer,
+		})
+		if err != nil {
+			handleError(w, err)
+			return
+		}
+
+		w.Write(payload)
 	})
 
+	mux.HandleFunc("/screens", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodGet {
+			w.WriteHeader(http.StatusMethodNotAllowed)
+			return
+		}
+
+		screens, err := display.Screens()
+
+		if err != nil {
+			handleError(w, err)
+			return
+		}
+
+		screensPayload := make([]screenPayload, len(screens))
+
+		for i, s := range screens {
+			screensPayload[i].Index = s.Index
+		}
+		payload, err := json.Marshal(screensResponse{
+			Screens: screensPayload,
+		})
+		if err != nil {
+			handleError(w, err)
+			return
+		}
+
+		w.Write(payload)
+	})
 	return mux
 }
