@@ -29,6 +29,12 @@ github.com/fsnotify/fsnotify v1.4.9/go.mod h1:znqG4EE+3YCdAaPaxE2ZRY/06pZUdp0tY4
 github.com/gen2brain/shm v0.0.0-20200228170931-49f9650110c5 h1:Y5Q2mEwfzjMt5+3u70Gtw93ZOu2UuPeeeTBDntF7FoY=
 github.com/gen2brain/shm v0.0.0-20200228170931-49f9650110c5/go.mod h1:uF6rMu/1nvu+5DpiRLwusA6xB8zlkNoGzKn8lmYONUo=
 github.com/gen2brain/x264-go v0.0.0-20180306035800-58f586137654/go.mod h1:17kvfYQKi9/QHiKPeqmJW0YuDPZEgy72tSBVmweSyiE=
+github.com/gen2brain/x264-go v0.2.0 h1:4rpAC+0gwjsiRryWYXe0/cYujNu10VAkw0QyRfTMKyE=
+github.com/gen2brain/x264-go v0.2.0/go.mod h1:X0UBuPKXLZLyijyuwegYhv54LHhCLvdcuPYSuXnBasM=
+github.com/gen2brain/x264-go/x264c v0.0.0-20211014010035-0051007e2ad5 h1:Ajgaf3KRuOZIQVJMdmIGoRD0v3+cB2QcV5BcLfdgT3I=
+github.com/gen2brain/x264-go/x264c v0.0.0-20211014010035-0051007e2ad5/go.mod h1:lshP4xmJNPCHscewcvsemVs62q8J8F0mh+FYBAfVG60=
+github.com/gen2brain/x264-go/yuv v0.0.0-20211014010035-0051007e2ad5 h1:hLLP8PrcDcy6+5LcPAIdyYza3S4KEHbzvNB+cvW/5gc=
+github.com/gen2brain/x264-go/yuv v0.0.0-20211014010035-0051007e2ad5/go.mod h1:xGOE/2fXjxu/ZONrm0EPqKHj/XDc13al1o48I3FQfHA=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/gliderlabs/ssh v0.1.1/go.mod h1:U7qILu1NlMHj9FlMhZLlkCdDnU1DBEAqr0aevW3Awn0=
 github.com/go-errors/errors v1.0.1/go.mod h1:f4zRHt4oKfwPJE5k8C9vpYG+aDHdBFUsgrm6/TyX73Q=
