@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"encoding/json"
+	//"encoding/json"
 	"fmt"
 	"net/http"
 )
@@ -19,7 +19,7 @@ func MakeHandler() http.Handler {
 			return
 		}
 
-		dec := json.NewDecoder(r.Body)
+		//dec := json.NewDecoder(r.Body)
 
 	})
 }
