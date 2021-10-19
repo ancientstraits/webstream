@@ -11,7 +11,7 @@ func handleError(w http.ResponseWriter, err error) {
 	w.WriteHeader(http.StatusInternalServerError)
 }
 
-func MakeHandler() http.Handler {
+func MakeHandler(err error) http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/sessions", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost {
@@ -21,5 +21,11 @@ func MakeHandler() http.Handler {
 
 		//dec := json.NewDecoder(r.Body)
 
+		if err != nil {
+			panic(err)
+		}
+
 	})
+
+	return mux
 }
