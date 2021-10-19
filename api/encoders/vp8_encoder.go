@@ -21,6 +21,13 @@ func newVP8Encoder(size image.Point, frameRate int) (Encoder, error) {
 	}
 }
 
+func (e *VP8Encoder) Close() error {
+	C.vpx_img_free(&e.vpxImage)
+	C.vpx_codec_destroy(&e.codeCtx)
+	
+	return nil
+}
+
 func init() {
 	registeredEncoders[VP8Codec] newVP8Encoder
 }
